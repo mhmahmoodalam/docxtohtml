@@ -18,13 +18,14 @@ import { Input } from "@/components/ui/input";
 import {
   CircleUser,
   Menu,
-  Package2,
+  Combine,
   Search,
   LayoutDashboard,
   Wrench,
   Settings,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { ModeToggle } from ".";
 
 export function NavigationBar() {
   const pathname = usePathname();
@@ -34,10 +35,10 @@ export function NavigationBar() {
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-6 md:text-sm md:w-full lg:gap-6">
         <Link
           href="/"
-          className="flex mr-10 items-center gap-2 text-lg font-semibold md:text-base"
+          className="flex flex-row mr-10 items-center gap-2 text-lg font-semibold md:text-base"
         >
-          <Package2 className="h-6 w-6" />
-          <span className="sr-only">DocxToHtml</span>
+          <Combine className="h-6 w-6" />
+          DocxToHtml
         </Link>
         <Link
           href="/dashboard"
@@ -84,10 +85,10 @@ export function NavigationBar() {
           <nav className="grid gap-6 text-lg font-medium">
             <Link
               href="/"
-              className="flex items-center gap-2 text-lg font-semibold"
+              className="flex flew-row items-center gap-2 text-lg font-semibold"
             >
-              <Package2 className="h-6 w-6" />
-              <span className="sr-only">DocxToHtml</span>
+              <Combine className="h-6 w-6" />
+              DocxToHtml
             </Link>
             <Link
               href="/dashboard"
@@ -116,7 +117,7 @@ export function NavigationBar() {
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="hidden flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+      <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
         <form className="ml-auto flex-1 sm:flex-initial">
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -127,22 +128,8 @@ export function NavigationBar() {
             />
           </div>
         </form>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="secondary" size="icon" className="rounded-full">
-              <CircleUser className="h-5 w-5" />
-              <span className="sr-only">Toggle user menu</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        
+        <ModeToggle />
       </div>
     </header>
   );
