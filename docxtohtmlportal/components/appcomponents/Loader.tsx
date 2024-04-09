@@ -32,7 +32,7 @@ export function DataTableSkeleton() {
         <hr className="h-2 mt-2"/>
       </div>
       <div className="flex flex-col space-y-3">
-        {[1, 2, 3, 5, 6, 7, 8, 9, 10].map((value, key) => {
+        {[1, 2, 3, 5, 6,].map((value, key) => {
           return (
             <div key={`job_data_row${value}`}>
               <div className="flex flex-row space-x-3">
