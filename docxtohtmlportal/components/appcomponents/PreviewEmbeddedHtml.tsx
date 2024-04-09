@@ -1,4 +1,4 @@
-import { IJobsData } from "@/app/uidata";
+import { IJobsData } from "@/app/_uidata";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

@@ -30,7 +30,7 @@ import {
   TooltipProvider,
 } from "@/components/ui/tooltip";
 
-import { getRunningJobsForState, JobStates, IJobsData } from "../uidata";
+import { getRunningJobsForState, JobStates, IJobsData } from "../_uidata";
 import { FunctionComponent, useEffect, useState } from "react";
 
 import { DataTableSkeleton } from "../../components/appcomponents/Loader";
