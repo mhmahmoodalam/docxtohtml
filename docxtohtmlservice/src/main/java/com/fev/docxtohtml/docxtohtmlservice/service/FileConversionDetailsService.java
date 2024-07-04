@@ -63,7 +63,8 @@ public class FileConversionDetailsService implements ConversionDetailsService {
 
     @Override
     public ConversionDetails getConversionJob(String jobId) {
-        return conversionDetailsRepository.findById(jobId).orElseThrow(()-> new JobNotFoundException(jobId));
+        return conversionDetailsRepository.findById(jobId)
+                .orElseThrow(()-> new JobNotFoundException(jobId));
     }
 
 
@@ -73,6 +74,16 @@ public class FileConversionDetailsService implements ConversionDetailsService {
         logger.info("Getting list of jobs ");
         return list.stream().map(ConversionListOutResource::convertFrom)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void delete(String jobId) {
+        var jobDetails = conversionDetailsRepository.findById(jobId)
+                .orElseThrow(()-> new JobNotFoundException(jobId));
+        conversionDetailsRepository.deleteById(jobId);
+        storageService.deleteJobFiles(jobDetails.getLocation());
+
+
     }
 
 

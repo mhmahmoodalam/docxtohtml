@@ -11,7 +11,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,12 +22,10 @@ public class FileSystemStorageService implements StorageService {
 
     private final Path rootLocation;
     private final ArchiveFileService archiveFileService;
-    static Logger logger = Logger.getLogger(FileSystemStorageService.class.getName());
 
     @Autowired
     public FileSystemStorageService(StorageProperties properties, ArchiveFileService archiveFileService) {
         rootLocation = Paths.get(properties.getLocation());
-
         this.archiveFileService = archiveFileService;
     }
 
@@ -75,7 +72,7 @@ public class FileSystemStorageService implements StorageService {
 
     @Override
     public List<File> loadAll(String path) {
-        try(Stream<Path> list = Files.walk(Path.of(path), Integer.MAX_VALUE);) {
+        try(Stream<Path> list = Files.walk(Path.of(path), Integer.MAX_VALUE)) {
                    return  list
                     .map(file -> new File(file.toString()))
                     .toList();
@@ -89,5 +86,10 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public void deleteAll() {
         FileSystemUtils.deleteRecursively(rootLocation.toFile());
+    }
+
+    @Override
+    public void deleteJobFiles(String jobFilesLocation) {
+        FileSystemUtils.deleteRecursively(Path.of(jobFilesLocation).toFile());
     }
 }

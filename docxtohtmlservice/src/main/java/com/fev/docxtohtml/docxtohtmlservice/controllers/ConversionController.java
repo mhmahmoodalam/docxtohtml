@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController()
@@ -66,6 +64,14 @@ public class ConversionController {
     @GetMapping("/api/v1/conversion/languages")
     public ResponseEntity<String[]> getConversionSupportedLanguages(){
         return ResponseEntity.ok(SupportedLanguages.supportedLanguages);
+    }
+
+    @DeleteMapping(value = "/api/v1/conversion/jobs")
+    public ResponseEntity<Object> deleteConversionJob(
+            @RequestParam("jobId") String jobId
+    ){
+        conversionDetailsService.delete(jobId);
+        return ResponseEntity.ok().build();
     }
 
 }

@@ -4,6 +4,8 @@ import com.fev.docxtohtml.docxtohtmlservice.resource.ConversionState;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Builder
@@ -27,10 +29,12 @@ public class ConversionDetails {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "originalFile")
+    @Cascade(CascadeType.ALL)
     private FileDetails originalFile;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "convertedFile")
+    @Cascade(CascadeType.ALL)
     private FileDetails convertedFile;
 
     @Column(nullable = false)

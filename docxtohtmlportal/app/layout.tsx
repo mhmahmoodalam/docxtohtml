@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "./middlewares";
+import { ThemeProvider } from "./_middlewares";
 import { NavigationBar } from "../components/appcomponents";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";

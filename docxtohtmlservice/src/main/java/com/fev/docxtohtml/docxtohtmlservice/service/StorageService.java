@@ -14,4 +14,6 @@ public interface StorageService {
     List<File> loadAll(String path);
 
     void deleteAll();
+
+    void deleteJobFiles(String jobFilesLocation);
 }

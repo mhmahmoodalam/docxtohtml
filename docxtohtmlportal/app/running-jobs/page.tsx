@@ -132,7 +132,8 @@ export default function Dashboard() {
       <div className="flex flex-row min-h-screen w-full justify-center bg-muted/40">
         <div className="flex w-full sm:gap-4 sm:py-4 sm:pl-14 items-start">
           <main className="flex-1 w-full justify-center items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 ">
-            <div className="flex  items-start m-32 gap-4 md:gap-8 min-w-4xl">
+            <div className="flex flex-col items-start m-32 mt-16out gap-4 md:gap-8 min-w-4xl">
+              <div className="text-[32px] font-[700] mb-4">Jobs View</div>
               <Tabs defaultValue={defaultSelctedTab} className="w-full">
                 <div className="flex items-center">
                   <TabsList>
